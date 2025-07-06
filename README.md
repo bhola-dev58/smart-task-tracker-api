@@ -115,7 +115,8 @@ curl -X POST "http://127.0.0.1:8000/tasks" ^
 ---
 ## Output DEMO
   <h2>Screenshots</h2>
-   ![output-test](https://github.com/user-attachments/assets/298d6938-b0aa-43b2-85fe-80008b1956a8)
+   <img src="https://github.com/user-attachments/assets/298d6938-b0aa-43b2-85fe-80008b1956a8" alt="output-test" width="500" height="300" />
+
 
 
 ## 🙋 Author
