@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Task Tracker</title>
+  <style>
+    body { font-family: Arial; margin: 30px; background: #f4f4f4; }
+    h1 { color: #333; }
+    #task-form input { padding: 8px; width: 200px; margin-right: 10px; }
+    #task-form button { padding: 8px 12px; }
+    .task-list { margin-top: 20px; }
+    .task-item { background: #fff; margin-bottom: 10px; padding: 10px; border-radius: 5px; box-shadow: 1px 1px 4px #ccc; }
+    .task-item.completed { background: #d4edda; text-decoration: line-through; }
+    .task-actions button { margin-left: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>📝 Smart Task Tracker</h1>
+
+  <form id="task-form">
+    <input type="text" id="title" placeholder="Task title" required>
+    <input type="text" id="description" placeholder="Description" required>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <div class="task-list" id="task-list"></div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:8000/tasks';
+
+    // Fetch and display tasks
+    async function loadTasks() {
+      const res = await fetch(API_URL);
+      const tasks = await res.json();
+      const list = document.getElementById('task-list');
+      list.innerHTML = '';
+      tasks.forEach(task => {
+        const div = document.createElement('div');
+        div.className = `task-item ${task.is_completed ? 'completed' : ''}`;
+        div.innerHTML = `
+          <strong>${task.title}</strong><br>
+          <small>${task.description}</small><br>
+          <div class="task-actions">
+            <button onclick="toggleComplete(${task.id}, ${!task.is_completed})">
+              ${task.is_completed ? 'Undo' : 'Complete'}
+            </button>
+            <button onclick="deleteTask(${task.id})">Delete</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // Add new task
+    document.getElementById('task-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, description, is_completed: false })
+      });
+
+      e.target.reset();
+      loadTasks();
+    });
+
+    // Toggle task completion
+    async function toggleComplete(id, status) {
+      await fetch(`${API_URL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ is_completed: status, title: '', description: '' }) // dummy values; need full object
+      });
+
+      loadTasks();
+    }
+
+    // Delete task
+    async function deleteTask(id) {
+      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      loadTasks();
+    }
+
+    loadTasks();
+  </script>
+</body>
+</html>

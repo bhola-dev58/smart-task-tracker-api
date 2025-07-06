@@ -1,2 +1,6 @@
 # Ignore virtual environment folder
 myenv/
+
+__pycache__/
+
+tasks.db
