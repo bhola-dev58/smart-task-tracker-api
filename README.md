@@ -113,6 +113,10 @@ curl -X POST "http://127.0.0.1:8000/tasks" ^
 - If you get CORS issues, ensure CORS middleware is added in `main.py`
 
 ---
+## Output DEMO
+  <h2>Screenshots</h2>
+   ![output-test](https://github.com/user-attachments/assets/298d6938-b0aa-43b2-85fe-80008b1956a8)
+
 
 ## 🙋 Author
 
