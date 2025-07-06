@@ -36,7 +36,7 @@ smart-task-tracker-api/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/smart-task-tracker-api.git
+git clone https://github.com/bhola-dev58/smart-task-tracker-api.git
 cd smart-task-tracker-api
 ```
 
@@ -117,8 +117,8 @@ curl -X POST "http://127.0.0.1:8000/tasks" ^
 ## 🙋 Author
 
 **Bhola Yadav**  
-📱 WhatsApp: 9198709984  
-🔗 GitHub: [your-username](https://github.com/your-username)
+📱 WhatsApp: +91-9198709984  
+🔗 GitHub: [bhola-dev58](https://github.com/bhola-dev58)
 
 ---
 
