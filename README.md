@@ -9,14 +9,18 @@ A simple REST API to manage tasks with full CRUD support.
 - SQLite
 
 ## Clone repo
-```git clone https://github.com/bhola-dev58/smart-task-tracker-api.git
+```bash
+git clone https://github.com/bhola-dev58/smart-task-tracker-api.git
 cd smart-task-tracker-api\
 ```
 ## Create virtual envirnment
-```python -m venv myenv```
+```bash 
+python -m venv myenv
+```
 
 ## Setup
 
 ```bash
-```pip install -r requirements.txt
-uvicorn main:app --reload```
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
